@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function f1(fx){
+            setTimeout(()=>{
+                console.log(1);
+                fx();
+            },Math.random()*3000);
+        }
+
+        function f2(){
+		return new Promise(function(fx){
+			setTimeout(()=>{
+				console.log(2);
+				fx();
+			},Math.random()*3000);
+		})
+	}
+			
+	function f3(){
+		setTimeout(()=>{
+			console.log(3);
+		},Math.random()*3000);
+	}		
+	new Promise(f1).then(f2).then(f3);
+
+
+    </script>
+</body>
+</html>
